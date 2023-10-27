@@ -11,6 +11,10 @@ namespace PRN211_FBlogAcademy
         {
             InitializeComponent();
             postRepository = new PostRepository();
+
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+
             updateGridView();
         }
 
@@ -126,6 +130,11 @@ namespace PRN211_FBlogAcademy
             Main main = new();
             main.ShowDialog();
             this.Close();
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+            btnCreate.Enabled = true;
         }
     }
 }
