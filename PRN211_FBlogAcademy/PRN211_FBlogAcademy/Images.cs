@@ -1,5 +1,4 @@
 ﻿
-using Data.Models;
 using Data.Repository;
 
 namespace PRN211_FBlogAcademy

@@ -187,7 +187,6 @@
         private Button btnDelete;
         private Button btnCreate;
         private Button btnUpdate;
-        private TextBox txtContent;
         private TextBox txtTitle;
         private Button btnBack;
         private Label lbLabel;
