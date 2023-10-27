@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PRN211_FBlogAcademy
 {
-    public partial class Post : Form
+    public partial class Images : Form
     {
-        public Post()
+        public Images()
         {
             InitializeComponent();
         }

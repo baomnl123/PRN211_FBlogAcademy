@@ -26,7 +26,7 @@ namespace PRN211_FBlogAcademy
             var adminEmail = _configHelper.config["Admin:email"];
             var adminPassword = _configHelper.config["Admin:password"];
 
-            if (email.Contains(adminEmail) && password.Contains(adminPassword))
+            if (email == adminEmail && password == adminPassword)
             {
                 this.Hide();
                 Main main = new();

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PRN211_FBlogAcademy
 {
-    public partial class Video : Form
+    public partial class Videos : Form
     {
-        public Video()
+        public Videos()
         {
             InitializeComponent();
         }
