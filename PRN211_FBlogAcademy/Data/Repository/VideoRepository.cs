@@ -2,7 +2,7 @@
 
 namespace Data.Repository
 {
-    internal class VideoRepository : RepositoryBase<Video>
+    public class VideoRepository : RepositoryBase<Video>
     {
     }
 }

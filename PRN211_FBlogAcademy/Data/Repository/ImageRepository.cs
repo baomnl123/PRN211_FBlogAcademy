@@ -2,7 +2,7 @@
 
 namespace Data.Repository
 {
-    internal class ImageRepository : RepositoryBase<Image>
+    public class ImageRepository : RepositoryBase<Image>
     {
     }
 }

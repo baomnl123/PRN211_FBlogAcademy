@@ -2,7 +2,7 @@
 
 namespace Data.Repository
 {
-    internal class PostRepository : RepositoryBase<Post>
+    public class PostRepository : RepositoryBase<Post>
     {
     }
 }
