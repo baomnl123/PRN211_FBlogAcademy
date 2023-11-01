@@ -6,14 +6,20 @@ namespace PRN211_FBlogAcademy
     public partial class Posts : Form
     {
         public PostRepository postRepository;
+        public ImageRepository imageRepository;
+        public VideoRepository videoRepository;
 
         public Posts()
         {
             InitializeComponent();
             postRepository = new PostRepository();
+            imageRepository = new ImageRepository();
+            videoRepository = new VideoRepository();
 
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+
+            txtId.ReadOnly = true;
 
             updateGridView();
         }
@@ -25,15 +31,7 @@ namespace PRN211_FBlogAcademy
             {
                 var listPost = posts.ToList();
 
-                dgvPosts.DataSource = listPost.Select(p => new
-                {
-                    Id = p.Id,
-                    Title = p.Title,
-                    Content = p.Content,
-                    Created_at = p.CreatedAt,
-                    Updated_at = p.UpdatedAt,
-                    Status = p.Status,
-                }).ToList();
+                dgvPosts.DataSource = listPost.Where(p => p.Status == true).ToList();
             }
         }
 
@@ -56,60 +54,96 @@ namespace PRN211_FBlogAcademy
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (!checkData()) return;
-
-            var post = new Post()
+            try
             {
-                Title = txtTitle.Text,
-                Content = txtContent.Text,
-                CreatedAt = DateTime.Now,
-                Status = true
-            };
-            postRepository.Add(post);
-            updateGridView();
+                if (!checkData()) return;
+
+                var post = new Post()
+                {
+                    Title = txtTitle.Text,
+                    Content = txtContent.Text,
+                    CreatedAt = DateTime.Now,
+                    Status = true
+                };
+                postRepository.Add(post);
+                updateGridView();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (!checkData()) return;
-
-            var id = int.Parse(txtId.Text.Trim());
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == id);
-            if (post == null)
+            try
             {
-                MessageBox.Show("Post does not exists!");
-                return;
+                if (!checkData()) return;
+
+                var id = int.Parse(txtId.Text.Trim());
+                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == id);
+                if (post == null)
+                {
+                    MessageBox.Show("Post does not exists!");
+                    return;
+                }
+
+                post.Title = txtTitle.Text;
+                post.Content = txtContent.Text;
+                post.UpdatedAt = DateTime.Now;
+                postRepository.UpdateEntity(post);
+
+                updateGridView();
+
+                btnCreate.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
             }
-
-            post.Title = txtTitle.Text;
-            post.Content = txtContent.Text;
-            post.UpdatedAt = DateTime.Now;
-            postRepository.UpdateEntity(post);
-
-            updateGridView();
-
-            btnCreate.Enabled = true;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(txtId.Text.Trim());
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == id);
-            if (post == null)
+            try
             {
-                MessageBox.Show("Post does not exists!");
-                return;
+                var id = int.Parse(txtId.Text.Trim());
+                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == id);
+                if (post == null)
+                {
+                    MessageBox.Show("Post does not exists!");
+                    return;
+                }
+
+                post.Status = false;
+                postRepository.DeleteEntity(post);
+
+                var images = imageRepository.GetAll().Where(p => p.PostId == post.Id).ToList();
+                foreach (var image in images)
+                {
+                    image.Status = false;
+                    imageRepository.DeleteEntity(image);
+                }
+
+                var videos = videoRepository.GetAll().Where(p => p.PostId == post.Id).ToList();
+                foreach(var video in videos)
+                {
+                    video.Status = false;
+                    videoRepository.DeleteEntity(video);
+                }
+
+                updateGridView();
+
+                btnCreate.Enabled = true;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
             }
-
-            postRepository.DeleteEntity(post);
-
-            updateGridView();
-
-            btnCreate.Enabled = true;
-            btnUpdate.Enabled = false;
-            btnDelete.Enabled = false;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dgvPosts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

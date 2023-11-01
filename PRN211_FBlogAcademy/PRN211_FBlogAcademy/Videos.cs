@@ -1,4 +1,5 @@
-﻿using Data.Repository;
+﻿using Data.Models;
+using Data.Repository;
 using System.Data;
 
 namespace PRN211_FBlogAcademy
@@ -15,8 +16,18 @@ namespace PRN211_FBlogAcademy
             postRepository = new PostRepository();
             videoRepository = new VideoRepository();
 
+            txtId.ReadOnly = true;
+            txtPostId.ReadOnly = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+
+            var posts = postRepository.GetAll().Where(p => p.Status == true).ToList();
+            if (posts != null && posts.Count > 0)
+            {
+                cbPost.DataSource = posts;
+                cbPost.DisplayMember = "Title";
+                cbPost.ValueMember = "Id";
+            }
 
             updateGridView();
         }
@@ -26,26 +37,12 @@ namespace PRN211_FBlogAcademy
             if (videos != null)
             {
                 var listVideo = videos.ToList();
-
-                dgvVideos.DataSource = listVideo.Select(p => new
-                {
-                    Id = p.Id,
-                    PostId = p.PostId,
-                    Url = p.Url,
-                    Created_at = p.CreatedAt,
-                    Status = p.Status,
-                }).ToList();
+                dgvVideos.DataSource = listVideo.Where(p => p.Status == true).ToList();
             }
         }
 
         public bool checkData()
         {
-            if (txtPostId.Text.Trim() == "")
-            {
-                MessageBox.Show("Post Id required!");
-                return false;
-            }
-
             if (txtURL.Text.Trim() == "")
             {
                 MessageBox.Show("Video URL required!");
@@ -59,16 +56,16 @@ namespace PRN211_FBlogAcademy
         {
             if (!checkData()) return;
 
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
+            var post = cbPost.SelectedItem as Post;
             if (post == null)
             {
                 MessageBox.Show("Post is not exists!");
                 return;
             }
 
-            var video = new Data.Models.Video()
+            var video = new Video()
             {
-                PostId = int.Parse(txtPostId.Text.Trim()),
+                PostId = post.Id,
                 Url = txtURL.Text.Trim(),
                 CreatedAt = DateTime.Now,
                 Status = true
@@ -100,6 +97,7 @@ namespace PRN211_FBlogAcademy
             video.Url = txtURL.Text.Trim();
             videoRepository.UpdateEntity(video);
 
+            btnCreate.Enabled = true;
             updateGridView();
         }
 
@@ -122,8 +120,10 @@ namespace PRN211_FBlogAcademy
                 return;
             }
 
+            video.Status = false;
             videoRepository.DeleteEntity(video);
 
+            btnCreate.Enabled = true;
             updateGridView();
         }
 

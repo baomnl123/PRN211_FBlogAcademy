@@ -1,4 +1,5 @@
 ﻿
+using Data.Models;
 using Data.Repository;
 
 namespace PRN211_FBlogAcademy
@@ -15,8 +16,18 @@ namespace PRN211_FBlogAcademy
             postRepository = new PostRepository();
             imageRepository = new ImageRepository();
 
+            txtId.ReadOnly = true;
+            txtPostId.ReadOnly = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+
+            var posts = postRepository.GetAll().Where(p => p.Status == true).ToList();
+            if (posts != null && posts.Count > 0)
+            {
+                cbPost.DataSource = posts;
+                cbPost.DisplayMember = "Title";
+                cbPost.ValueMember = "Id";
+            }
 
             updateGridView();
         }
@@ -27,26 +38,12 @@ namespace PRN211_FBlogAcademy
             if (images != null)
             {
                 var listImage = images.ToList();
-
-                dgvImages.DataSource = listImage.Select(p => new
-                {
-                    Id = p.Id,
-                    PostId = p.PostId,
-                    Url = p.Url,
-                    Created_at = p.CreatedAt,
-                    Status = p.Status,
-                }).ToList();
+                dgvImages.DataSource = listImage.Where(p => p.Status == true).ToList();
             }
         }
 
         public bool checkData()
         {
-            if (txtPostId.Text.Trim() == "")
-            {
-                MessageBox.Show("Post Id required!");
-                return false;
-            }
-
             if (txtURL.Text.Trim() == "")
             {
                 MessageBox.Show("Image URL required!");
@@ -60,7 +57,7 @@ namespace PRN211_FBlogAcademy
         {
             if (!checkData()) return;
 
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
+            var post = cbPost.SelectedItem as Post;
             if (post == null)
             {
                 MessageBox.Show("Post is not exists!");
@@ -69,7 +66,7 @@ namespace PRN211_FBlogAcademy
 
             var image = new Data.Models.Image()
             {
-                PostId = int.Parse(txtPostId.Text.Trim()),
+                PostId = post.Id,
                 Url = txtURL.Text.Trim(),
                 CreatedAt = DateTime.Now,
                 Status = true
@@ -101,6 +98,7 @@ namespace PRN211_FBlogAcademy
             image.Url = txtURL.Text.Trim();
             imageRepository.UpdateEntity(image);
 
+            btnCreate.Enabled = true;
             updateGridView();
         }
 
@@ -123,8 +121,10 @@ namespace PRN211_FBlogAcademy
                 return;
             }
 
+            image.Status = false;
             imageRepository.DeleteEntity(image);
 
+            btnCreate.Enabled = true;
             updateGridView();
         }
 

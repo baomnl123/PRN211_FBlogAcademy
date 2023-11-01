@@ -135,7 +135,7 @@
             dgvPosts.Location = new Point(306, 132);
             dgvPosts.Name = "dgvPosts";
             dgvPosts.RowTemplate.Height = 25;
-            dgvPosts.Size = new Size(471, 276);
+            dgvPosts.Size = new Size(641, 276);
             dgvPosts.TabIndex = 9;
             dgvPosts.CellDoubleClick += dgvPosts_CellDoubleClick;
             // 
@@ -159,7 +159,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(971, 450);
             Controls.Add(txtId);
             Controls.Add(lbId);
             Controls.Add(dgvPosts);

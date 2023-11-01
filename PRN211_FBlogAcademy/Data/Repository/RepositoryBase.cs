@@ -28,7 +28,8 @@ namespace Data.Repository
 
         public void DeleteEntity(T entity)
         {
-            _dbSet.Remove(entity);
+            var tracker = _context.Attach(entity);
+            tracker.State = EntityState.Modified;
             _context.SaveChanges();
         }
 
