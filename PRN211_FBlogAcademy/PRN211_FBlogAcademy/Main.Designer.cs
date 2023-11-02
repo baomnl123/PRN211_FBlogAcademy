@@ -32,6 +32,7 @@
             btnImage = new Button();
             btnVideo = new Button();
             btnLogout = new Button();
+            fblogLabel = new Label();
             SuspendLayout();
             // 
             // btnPost
@@ -76,11 +77,23 @@
             btnLogout.UseVisualStyleBackColor = false;
             btnLogout.Click += btnLogout_Click;
             // 
+            // fblogLabel
+            // 
+            fblogLabel.AutoSize = true;
+            fblogLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            fblogLabel.ForeColor = Color.Red;
+            fblogLabel.Location = new Point(207, 88);
+            fblogLabel.Name = "fblogLabel";
+            fblogLabel.Size = new Size(394, 32);
+            fblogLabel.TabIndex = 4;
+            fblogLabel.Text = "FBLOG ACADEMY MANAGEMENT";
+            // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(fblogLabel);
             Controls.Add(btnLogout);
             Controls.Add(btnVideo);
             Controls.Add(btnImage);
@@ -88,6 +101,7 @@
             Name = "Main";
             Text = "Main";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -96,5 +110,6 @@
         private Button btnImage;
         private Button btnVideo;
         private Button btnLogout;
+        private Label fblogLabel;
     }
 }

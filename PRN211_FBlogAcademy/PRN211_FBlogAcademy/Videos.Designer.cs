@@ -79,6 +79,8 @@
             // 
             // dgvVideos
             // 
+            dgvVideos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVideos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dgvVideos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVideos.Location = new Point(315, 155);
             dgvVideos.Name = "dgvVideos";
@@ -100,12 +102,12 @@
             // lbLabel
             // 
             lbLabel.AutoSize = true;
-            lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lbLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lbLabel.Location = new Point(496, 57);
             lbLabel.Name = "lbLabel";
-            lbLabel.Size = new Size(87, 32);
+            lbLabel.Size = new Size(359, 45);
             lbLabel.TabIndex = 28;
-            lbLabel.Text = "VIDEO";
+            lbLabel.Text = "VIDEO MANAGEMENT";
             // 
             // lbSelectPost
             // 

@@ -131,32 +131,32 @@ namespace PRN211_FBlogAcademy
         {
             try
             {
-            var id = int.Parse(txtId.Text.Trim());
-            var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
-            if (image == null)
-            {
-                MessageBox.Show("Image is not exists!");
-                return;
-            }
+                var id = int.Parse(txtId.Text.Trim());
+                var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
+                if (image == null)
+                {
+                    MessageBox.Show("Image is not exists!");
+                    return;
+                }
 
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-            if (post == null)
-            {
-                MessageBox.Show("Post is not exists!");
-                return;
-            }
+                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
+                if (post == null)
+                {
+                    MessageBox.Show("Post is not exists!");
+                    return;
+                }
 
-            image.Status = false;
-            imageRepository.DeleteEntity(image);
+                image.Status = false;
+                imageRepository.DeleteEntity(image);
 
-            btnCreate.Enabled = true;
-            updateGridView();
+                btnCreate.Enabled = true;
+                updateGridView();
             }
             catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-}
+        }
 
         private void dgvImages_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
