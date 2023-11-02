@@ -180,6 +180,8 @@ namespace PRN211_FBlogAcademy
 
                 dgvPosts.DataSource = listPost.ToList();
             }
+
+            btnCreate.Enabled = true;
         }
     }
 }
