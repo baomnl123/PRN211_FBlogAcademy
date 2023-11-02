@@ -42,6 +42,7 @@
             lbSelectPost = new Label();
             pctImage = new PictureBox();
             btnImage = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pctImage).BeginInit();
             SuspendLayout();
@@ -180,11 +181,22 @@
             btnImage.UseVisualStyleBackColor = true;
             btnImage.Click += btnImage_Click;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(110, 372);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 31;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // Images
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1078, 514);
+            Controls.Add(btnRefresh);
             Controls.Add(btnImage);
             Controls.Add(pctImage);
             Controls.Add(lbSelectPost);
@@ -226,5 +238,6 @@
         private Label lbSelectPost;
         private PictureBox pctImage;
         private Button btnImage;
+        private Button btnRefresh;
     }
 }

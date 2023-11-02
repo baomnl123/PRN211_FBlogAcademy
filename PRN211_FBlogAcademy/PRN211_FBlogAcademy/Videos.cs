@@ -191,10 +191,21 @@ namespace PRN211_FBlogAcademy
             var videos = videoRepository.GetAll().Where(p => p.PostId == post.Id && p.Status == true);
             if (videos != null)
             {
-                var listVideo= videos.ToList();
+                var listVideo = videos.ToList();
 
                 dgvVideos.DataSource = listVideo.ToList();
             }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtPostId.Text = null;
+            txtURL.Text = null;
+
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }

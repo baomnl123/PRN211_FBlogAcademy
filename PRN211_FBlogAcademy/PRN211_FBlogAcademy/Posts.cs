@@ -183,5 +183,16 @@ namespace PRN211_FBlogAcademy
 
             btnCreate.Enabled = true;
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtTitle.Text = null;
+            txtContent.Text = null;
+
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+        }
     }
 }

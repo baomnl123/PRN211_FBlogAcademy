@@ -195,5 +195,16 @@ namespace PRN211_FBlogAcademy
                 dgvImages.DataSource = listImage.ToList();
             }
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtPostId.Text = null;
+            pctImage.ImageLocation = null;
+
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+        }
     }
 }
