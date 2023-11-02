@@ -48,7 +48,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(106, 176);
+            txtId.Location = new Point(110, 176);
             txtId.Name = "txtId";
             txtId.Size = new Size(169, 23);
             txtId.TabIndex = 23;
@@ -56,7 +56,7 @@
             // lbId
             // 
             lbId.AutoSize = true;
-            lbId.Location = new Point(36, 179);
+            lbId.Location = new Point(40, 179);
             lbId.Name = "lbId";
             lbId.Size = new Size(17, 15);
             lbId.TabIndex = 22;
@@ -76,7 +76,7 @@
             // 
             btnDelete.BackColor = Color.Brown;
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(200, 372);
+            btnDelete.Location = new Point(204, 372);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 20;
@@ -87,7 +87,7 @@
             // btnCreate
             // 
             btnCreate.BackColor = Color.FromArgb(128, 255, 255);
-            btnCreate.Location = new Point(200, 343);
+            btnCreate.Location = new Point(204, 343);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(75, 23);
             btnCreate.TabIndex = 19;
@@ -97,7 +97,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(106, 343);
+            btnUpdate.Location = new Point(110, 343);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 18;
@@ -127,7 +127,7 @@
             // 
             // txtPostId
             // 
-            txtPostId.Location = new Point(106, 205);
+            txtPostId.Location = new Point(110, 205);
             txtPostId.Name = "txtPostId";
             txtPostId.Size = new Size(169, 23);
             txtPostId.TabIndex = 25;
@@ -135,7 +135,7 @@
             // lbPostId
             // 
             lbPostId.AutoSize = true;
-            lbPostId.Location = new Point(36, 208);
+            lbPostId.Location = new Point(40, 208);
             lbPostId.Name = "lbPostId";
             lbPostId.Size = new Size(43, 15);
             lbPostId.TabIndex = 24;
@@ -144,7 +144,7 @@
             // cbPost
             // 
             cbPost.FormattingEnabled = true;
-            cbPost.Location = new Point(106, 147);
+            cbPost.Location = new Point(110, 147);
             cbPost.Name = "cbPost";
             cbPost.Size = new Size(169, 23);
             cbPost.TabIndex = 27;
@@ -152,7 +152,7 @@
             // lbSelectPost
             // 
             lbSelectPost.AutoSize = true;
-            lbSelectPost.Location = new Point(36, 150);
+            lbSelectPost.Location = new Point(40, 150);
             lbSelectPost.Name = "lbSelectPost";
             lbSelectPost.Size = new Size(64, 15);
             lbSelectPost.TabIndex = 28;
@@ -160,7 +160,7 @@
             // 
             // pctImage
             // 
-            pctImage.Location = new Point(106, 234);
+            pctImage.Location = new Point(110, 234);
             pctImage.Name = "pctImage";
             pctImage.Size = new Size(169, 103);
             pctImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -169,7 +169,7 @@
             // 
             // btnImage
             // 
-            btnImage.Location = new Point(10, 283);
+            btnImage.Location = new Point(14, 283);
             btnImage.Name = "btnImage";
             btnImage.Size = new Size(90, 23);
             btnImage.TabIndex = 30;

@@ -28,34 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtURL = new TextBox();
             txtPostId = new TextBox();
             lbPostId = new Label();
             txtId = new TextBox();
             lbId = new Label();
             dgvVideos = new DataGridView();
+            btnBack = new Button();
+            lbLabel = new Label();
+            lbSelectPost = new Label();
+            cbPost = new ComboBox();
+            btnVideo = new Button();
+            pctVideo = new PictureBox();
             btnDelete = new Button();
             btnCreate = new Button();
             btnUpdate = new Button();
-            btnBack = new Button();
-            lbLabel = new Label();
-            lbURL = new Label();
-            lbSelectPost = new Label();
-            cbPost = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvVideos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctVideo).BeginInit();
             SuspendLayout();
-            // 
-            // txtURL
-            // 
-            txtURL.Location = new Point(97, 242);
-            txtURL.Name = "txtURL";
-            txtURL.Size = new Size(169, 23);
-            txtURL.TabIndex = 38;
-            txtURL.TextChanged += txtURL_TextChanged;
             // 
             // txtPostId
             // 
-            txtPostId.Location = new Point(97, 213);
+            txtPostId.Location = new Point(111, 213);
             txtPostId.Name = "txtPostId";
             txtPostId.Size = new Size(169, 23);
             txtPostId.TabIndex = 37;
@@ -63,7 +56,7 @@
             // lbPostId
             // 
             lbPostId.AutoSize = true;
-            lbPostId.Location = new Point(32, 216);
+            lbPostId.Location = new Point(46, 216);
             lbPostId.Name = "lbPostId";
             lbPostId.Size = new Size(43, 15);
             lbPostId.TabIndex = 36;
@@ -71,7 +64,7 @@
             // 
             // txtId
             // 
-            txtId.Location = new Point(97, 184);
+            txtId.Location = new Point(111, 184);
             txtId.Name = "txtId";
             txtId.Size = new Size(169, 23);
             txtId.TabIndex = 35;
@@ -79,7 +72,7 @@
             // lbId
             // 
             lbId.AutoSize = true;
-            lbId.Location = new Point(32, 187);
+            lbId.Location = new Point(46, 187);
             lbId.Name = "lbId";
             lbId.Size = new Size(17, 15);
             lbId.TabIndex = 34;
@@ -91,42 +84,9 @@
             dgvVideos.Location = new Point(315, 155);
             dgvVideos.Name = "dgvVideos";
             dgvVideos.RowTemplate.Height = 25;
-            dgvVideos.Size = new Size(638, 276);
+            dgvVideos.Size = new Size(756, 352);
             dgvVideos.TabIndex = 33;
             dgvVideos.CellDoubleClick += dgvVideos_CellDoubleClick;
-            // 
-            // btnDelete
-            // 
-            btnDelete.BackColor = Color.Brown;
-            btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(191, 310);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(75, 23);
-            btnDelete.TabIndex = 32;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = false;
-            btnDelete.Click += btnDelete_Click;
-            // 
-            // btnCreate
-            // 
-            btnCreate.BackColor = Color.FromArgb(128, 255, 255);
-            btnCreate.Location = new Point(191, 271);
-            btnCreate.Name = "btnCreate";
-            btnCreate.Size = new Size(75, 23);
-            btnCreate.TabIndex = 31;
-            btnCreate.Text = "Create";
-            btnCreate.UseVisualStyleBackColor = false;
-            btnCreate.Click += btnCreate_Click;
-            // 
-            // btnUpdate
-            // 
-            btnUpdate.Location = new Point(97, 271);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 23);
-            btnUpdate.TabIndex = 30;
-            btnUpdate.Text = "Update";
-            btnUpdate.UseVisualStyleBackColor = true;
-            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnBack
             // 
@@ -142,25 +102,16 @@
             // 
             lbLabel.AutoSize = true;
             lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbLabel.Location = new Point(412, 43);
+            lbLabel.Location = new Point(496, 57);
             lbLabel.Name = "lbLabel";
             lbLabel.Size = new Size(87, 32);
             lbLabel.TabIndex = 28;
             lbLabel.Text = "VIDEO";
             // 
-            // lbURL
-            // 
-            lbURL.AutoSize = true;
-            lbURL.Location = new Point(32, 245);
-            lbURL.Name = "lbURL";
-            lbURL.Size = new Size(28, 15);
-            lbURL.TabIndex = 27;
-            lbURL.Text = "URL";
-            // 
             // lbSelectPost
             // 
             lbSelectPost.AutoSize = true;
-            lbSelectPost.Location = new Point(27, 158);
+            lbSelectPost.Location = new Point(41, 158);
             lbSelectPost.Name = "lbSelectPost";
             lbSelectPost.Size = new Size(64, 15);
             lbSelectPost.TabIndex = 40;
@@ -169,52 +120,101 @@
             // cbPost
             // 
             cbPost.FormattingEnabled = true;
-            cbPost.Location = new Point(97, 155);
+            cbPost.Location = new Point(111, 155);
             cbPost.Name = "cbPost";
             cbPost.Size = new Size(169, 23);
             cbPost.TabIndex = 39;
+            // 
+            // btnVideo
+            // 
+            btnVideo.Location = new Point(15, 291);
+            btnVideo.Name = "btnVideo";
+            btnVideo.Size = new Size(90, 23);
+            btnVideo.TabIndex = 45;
+            btnVideo.Text = "Upload Video";
+            btnVideo.UseVisualStyleBackColor = true;
+            btnVideo.Click += btnVideo_Click;
+            // 
+            // pctVideo
+            // 
+            pctVideo.Location = new Point(111, 242);
+            pctVideo.Name = "pctVideo";
+            pctVideo.Size = new Size(169, 103);
+            pctVideo.SizeMode = PictureBoxSizeMode.Zoom;
+            pctVideo.TabIndex = 44;
+            pctVideo.TabStop = false;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.Brown;
+            btnDelete.ForeColor = SystemColors.ControlLightLight;
+            btnDelete.Location = new Point(205, 380);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 43;
+            btnDelete.Text = "Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            // 
+            // btnCreate
+            // 
+            btnCreate.BackColor = Color.FromArgb(128, 255, 255);
+            btnCreate.Location = new Point(205, 351);
+            btnCreate.Name = "btnCreate";
+            btnCreate.Size = new Size(75, 23);
+            btnCreate.TabIndex = 42;
+            btnCreate.Text = "Create";
+            btnCreate.UseVisualStyleBackColor = false;
+            // 
+            // btnUpdate
+            // 
+            btnUpdate.Location = new Point(111, 351);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(75, 23);
+            btnUpdate.TabIndex = 41;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = true;
             // 
             // Videos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(965, 450);
+            ClientSize = new Size(1083, 519);
+            Controls.Add(btnVideo);
+            Controls.Add(pctVideo);
+            Controls.Add(btnDelete);
+            Controls.Add(btnCreate);
+            Controls.Add(btnUpdate);
             Controls.Add(lbSelectPost);
             Controls.Add(cbPost);
-            Controls.Add(txtURL);
             Controls.Add(txtPostId);
             Controls.Add(lbPostId);
             Controls.Add(txtId);
             Controls.Add(lbId);
             Controls.Add(dgvVideos);
-            Controls.Add(btnDelete);
-            Controls.Add(btnCreate);
-            Controls.Add(btnUpdate);
             Controls.Add(btnBack);
             Controls.Add(lbLabel);
-            Controls.Add(lbURL);
             Name = "Videos";
             Text = "Video";
             ((System.ComponentModel.ISupportInitialize)dgvVideos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctVideo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private TextBox txtURL;
         private TextBox txtPostId;
         private Label lbPostId;
         private TextBox txtId;
         private Label lbId;
         private DataGridView dgvVideos;
+        private Button btnBack;
+        private Label lbLabel;
+        private Label lbSelectPost;
+        private ComboBox cbPost;
+        private Button btnVideo;
+        private PictureBox pctVideo;
         private Button btnDelete;
         private Button btnCreate;
         private Button btnUpdate;
-        private Button btnBack;
-        private Label lbLabel;
-        private Label lbURL;
-        private Label lbSelectPost;
-        private ComboBox cbPost;
     }
 }

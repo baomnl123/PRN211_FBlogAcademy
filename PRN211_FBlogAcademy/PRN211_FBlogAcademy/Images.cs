@@ -42,59 +42,95 @@ namespace PRN211_FBlogAcademy
             }
         }
 
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String imageLocation = "";
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files(*.jpg) | *.jpg | PNG files(*.png) | *.png | All files(*.*) | *.*";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    imageLocation = dialog.FileName;
+                    pctImage.ImageLocation = imageLocation;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var post = cbPost.SelectedItem as Post;
-            if (post == null)
+            try
             {
-                MessageBox.Show("Post is not exists!");
-                return;
+                var post = cbPost.SelectedItem as Post;
+                if (post == null)
+                {
+                    MessageBox.Show("Post is not exists!");
+                    return;
+                }
+
+                if (pctImage == null)
+                {
+                    MessageBox.Show("Image is required!");
+                    return;
+                }
+
+                var image = new Data.Models.Image()
+                {
+                    PostId = post.Id,
+                    Url = pctImage.ImageLocation,
+                    CreatedAt = DateTime.Now,
+                    Status = true
+                };
+
+                imageRepository.Add(image);
+                updateGridView();
             }
-
-            if (pctImage == null)
+            catch (Exception ex)
             {
-                MessageBox.Show("You must choose an image first!");
-                return;
+                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            var image = new Data.Models.Image()
-            {
-                PostId = post.Id,
-                Url = pctImage.ImageLocation,
-                CreatedAt = DateTime.Now,
-                Status = true
-            };
-
-            imageRepository.Add(image);
-            updateGridView();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var id = int.Parse(txtId.Text.Trim());
-            var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
-            if (image == null)
+            try
             {
-                MessageBox.Show("Image is not exists!");
-                return;
-            }
+                var id = int.Parse(txtId.Text.Trim());
+                var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
+                if (image == null)
+                {
+                    MessageBox.Show("Image is not exists!");
+                    return;
+                }
 
-            var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-            if (post == null)
+                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
+                if (post == null)
+                {
+                    MessageBox.Show("Post is not exists!");
+                    return;
+                }
+
+                image.Url = pctImage.ImageLocation;
+                imageRepository.UpdateEntity(image);
+
+                btnCreate.Enabled = true;
+                updateGridView();
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Post is not exists!");
-                return;
+                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            image.Url = pctImage.ImageLocation;
-            imageRepository.UpdateEntity(image);
-
-            btnCreate.Enabled = true;
-            updateGridView();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            try
+            {
             var id = int.Parse(txtId.Text.Trim());
             var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
             if (image == null)
@@ -115,7 +151,12 @@ namespace PRN211_FBlogAcademy
 
             btnCreate.Enabled = true;
             updateGridView();
-        }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+}
 
         private void dgvImages_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -140,31 +181,6 @@ namespace PRN211_FBlogAcademy
             Main main = new();
             main.ShowDialog();
             this.Close();
-        }
-
-        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        {
-
-        }
-
-        private void btnImage_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                String imageLocation = "";
-                OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "jpg files(*.jpg) | *.jpg | PNG files(*.png) | *.png | All files(*.*) | *.*";
-
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    imageLocation = dialog.FileName;
-                    pctImage.ImageLocation = imageLocation;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
     }
 }
