@@ -56,7 +56,7 @@ namespace PRN211_FBlogAcademy
                     pctImage.ImageLocation = imageLocation;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -90,7 +90,7 @@ namespace PRN211_FBlogAcademy
                 imageRepository.Add(image);
                 updateGridView();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -121,7 +121,7 @@ namespace PRN211_FBlogAcademy
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -152,7 +152,7 @@ namespace PRN211_FBlogAcademy
             btnCreate.Enabled = true;
             updateGridView();
             }
-            catch(Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

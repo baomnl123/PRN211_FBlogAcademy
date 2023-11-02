@@ -55,7 +55,7 @@ namespace PRN211_FBlogAcademy
                     txtURL.Text = videoLocation;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -90,7 +90,7 @@ namespace PRN211_FBlogAcademy
                 videoRepository.Add(video);
                 updateGridView();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -122,7 +122,7 @@ namespace PRN211_FBlogAcademy
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -153,7 +153,7 @@ namespace PRN211_FBlogAcademy
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
