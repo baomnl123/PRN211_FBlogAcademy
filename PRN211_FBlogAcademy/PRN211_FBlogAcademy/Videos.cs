@@ -52,7 +52,7 @@ namespace PRN211_FBlogAcademy
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     videoLocation = dialog.FileName;
-                    pctVideo.ImageLocation = videoLocation;
+                    txtURL.Text = videoLocation;
                 }
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                if (pctVideo == null)
+                if (txtURL.Text.Trim() == null)
                 {
                     MessageBox.Show("Video is required!");
                     return;
@@ -82,7 +82,7 @@ namespace PRN211_FBlogAcademy
                 var video = new Video()
                 {
                     PostId = post.Id,
-                    Url = pctVideo.ImageLocation,
+                    Url = txtURL.Text.Trim(),
                     CreatedAt = DateTime.Now,
                     Status = true
                 };
@@ -116,7 +116,7 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                video.Url = pctVideo.ImageLocation;
+                video.Url = txtURL.Text.Trim();
                 videoRepository.UpdateEntity(video);
 
                 btnCreate.Enabled = true;
@@ -164,7 +164,7 @@ namespace PRN211_FBlogAcademy
             var row = dgvVideos.Rows[e.RowIndex];
             txtId.Text = row.Cells[0].Value.ToString();
             txtPostId.Text = row.Cells[1].Value.ToString();
-            pctVideo.ImageLocation = row.Cells[2].Value.ToString();
+            txtURL.Text = row.Cells[2].Value.ToString();
 
             btnCreate.Enabled = false;
             btnUpdate.Enabled = true;

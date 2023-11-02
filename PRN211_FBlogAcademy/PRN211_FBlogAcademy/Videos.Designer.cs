@@ -38,12 +38,11 @@
             lbSelectPost = new Label();
             cbPost = new ComboBox();
             btnVideo = new Button();
-            pctVideo = new PictureBox();
             btnDelete = new Button();
             btnCreate = new Button();
             btnUpdate = new Button();
+            txtURL = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvVideos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pctVideo).BeginInit();
             SuspendLayout();
             // 
             // txtPostId
@@ -127,7 +126,7 @@
             // 
             // btnVideo
             // 
-            btnVideo.Location = new Point(15, 291);
+            btnVideo.Location = new Point(15, 242);
             btnVideo.Name = "btnVideo";
             btnVideo.Size = new Size(90, 23);
             btnVideo.TabIndex = 45;
@@ -135,52 +134,53 @@
             btnVideo.UseVisualStyleBackColor = true;
             btnVideo.Click += btnVideo_Click;
             // 
-            // pctVideo
-            // 
-            pctVideo.Location = new Point(111, 242);
-            pctVideo.Name = "pctVideo";
-            pctVideo.Size = new Size(169, 103);
-            pctVideo.SizeMode = PictureBoxSizeMode.Zoom;
-            pctVideo.TabIndex = 44;
-            pctVideo.TabStop = false;
-            // 
             // btnDelete
             // 
             btnDelete.BackColor = Color.Brown;
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(205, 380);
+            btnDelete.Location = new Point(205, 300);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 43;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnCreate
             // 
             btnCreate.BackColor = Color.FromArgb(128, 255, 255);
-            btnCreate.Location = new Point(205, 351);
+            btnCreate.Location = new Point(205, 271);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(75, 23);
             btnCreate.TabIndex = 42;
             btnCreate.Text = "Create";
             btnCreate.UseVisualStyleBackColor = false;
+            btnCreate.Click += btnCreate_Click;
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(111, 351);
+            btnUpdate.Location = new Point(111, 271);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 41;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // txtURL
+            // 
+            txtURL.Location = new Point(111, 242);
+            txtURL.Name = "txtURL";
+            txtURL.Size = new Size(169, 23);
+            txtURL.TabIndex = 46;
             // 
             // Videos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1083, 519);
+            Controls.Add(txtURL);
             Controls.Add(btnVideo);
-            Controls.Add(pctVideo);
             Controls.Add(btnDelete);
             Controls.Add(btnCreate);
             Controls.Add(btnUpdate);
@@ -196,7 +196,6 @@
             Name = "Videos";
             Text = "Video";
             ((System.ComponentModel.ISupportInitialize)dgvVideos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pctVideo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -212,9 +211,9 @@
         private Label lbSelectPost;
         private ComboBox cbPost;
         private Button btnVideo;
-        private PictureBox pctVideo;
         private Button btnDelete;
         private Button btnCreate;
         private Button btnUpdate;
+        private TextBox txtURL;
     }
 }
