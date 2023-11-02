@@ -183,5 +183,18 @@ namespace PRN211_FBlogAcademy
             main.ShowDialog();
             this.Close();
         }
+
+        private void cbPost_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var post = cbPost.SelectedItem as Post;
+            txtPostId.Text = post.Id.ToString();
+            var videos = videoRepository.GetAll().Where(p => p.PostId == post.Id && p.Status == true);
+            if (videos != null)
+            {
+                var listVideo= videos.ToList();
+
+                dgvVideos.DataSource = listVideo.ToList();
+            }
+        }
     }
 }
