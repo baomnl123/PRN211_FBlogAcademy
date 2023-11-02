@@ -40,6 +40,8 @@
             dgvPosts = new DataGridView();
             lbId = new Label();
             txtId = new TextBox();
+            btnSearch = new Button();
+            txtSearch = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPosts).BeginInit();
             SuspendLayout();
             // 
@@ -65,7 +67,7 @@
             // 
             lbLabel.AutoSize = true;
             lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbLabel.Location = new Point(350, 61);
+            lbLabel.Location = new Point(416, 37);
             lbLabel.Name = "lbLabel";
             lbLabel.Size = new Size(74, 32);
             lbLabel.TabIndex = 2;
@@ -135,7 +137,7 @@
             dgvPosts.Location = new Point(306, 132);
             dgvPosts.Name = "dgvPosts";
             dgvPosts.RowTemplate.Height = 25;
-            dgvPosts.Size = new Size(641, 276);
+            dgvPosts.Size = new Size(653, 306);
             dgvPosts.TabIndex = 9;
             dgvPosts.CellDoubleClick += dgvPosts_CellDoubleClick;
             // 
@@ -155,11 +157,30 @@
             txtId.Size = new Size(169, 23);
             txtId.TabIndex = 11;
             // 
+            // btnSearch
+            // 
+            btnSearch.Location = new Point(306, 103);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(75, 23);
+            btnSearch.TabIndex = 12;
+            btnSearch.Text = "Search";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(387, 103);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(243, 23);
+            txtSearch.TabIndex = 13;
+            // 
             // Posts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 450);
+            Controls.Add(txtSearch);
+            Controls.Add(btnSearch);
             Controls.Add(txtId);
             Controls.Add(lbId);
             Controls.Add(dgvPosts);
@@ -193,5 +214,7 @@
         private DataGridView dgvPosts;
         private Label lbId;
         private TextBox txtId;
+        private Button btnSearch;
+        private TextBox txtSearch;
     }
 }

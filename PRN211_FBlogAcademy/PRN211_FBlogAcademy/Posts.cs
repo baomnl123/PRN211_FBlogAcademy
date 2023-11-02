@@ -128,7 +128,7 @@ namespace PRN211_FBlogAcademy
                 }
 
                 var videos = videoRepository.GetAll().Where(p => p.PostId == post.Id).ToList();
-                foreach(var video in videos)
+                foreach (var video in videos)
                 {
                     video.Status = false;
                     videoRepository.DeleteEntity(video);
@@ -169,6 +169,17 @@ namespace PRN211_FBlogAcademy
         private void txtTitle_TextChanged(object sender, EventArgs e)
         {
             btnCreate.Enabled = true;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var posts = postRepository.GetAll().Where(p => p.Title.Contains(txtSearch.Text) && p.Status == true);
+            if (posts != null)
+            {
+                var listPost = posts.ToList();
+
+                dgvPosts.DataSource = listPost.ToList();
+            }
         }
     }
 }
