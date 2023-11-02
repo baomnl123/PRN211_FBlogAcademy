@@ -49,6 +49,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(175, 23);
             txtPassword.TabIndex = 1;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // lbEmail
             // 
