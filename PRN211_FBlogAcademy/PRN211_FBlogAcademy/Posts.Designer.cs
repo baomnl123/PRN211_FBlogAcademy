@@ -173,7 +173,7 @@
             // 
             txtSearch.Location = new Point(387, 103);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(243, 23);
+            txtSearch.Size = new Size(572, 23);
             txtSearch.TabIndex = 13;
             // 
             // Posts
