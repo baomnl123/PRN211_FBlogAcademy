@@ -36,18 +36,19 @@
             btnUpdate = new Button();
             btnBack = new Button();
             lbLabel = new Label();
-            lbURL = new Label();
             txtPostId = new TextBox();
             lbPostId = new Label();
-            txtURL = new TextBox();
             cbPost = new ComboBox();
             lbSelectPost = new Label();
+            pctImage = new PictureBox();
+            btnImage = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvImages).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pctImage).BeginInit();
             SuspendLayout();
             // 
             // txtId
             // 
-            txtId.Location = new Point(96, 176);
+            txtId.Location = new Point(106, 176);
             txtId.Name = "txtId";
             txtId.Size = new Size(169, 23);
             txtId.TabIndex = 23;
@@ -55,7 +56,7 @@
             // lbId
             // 
             lbId.AutoSize = true;
-            lbId.Location = new Point(26, 179);
+            lbId.Location = new Point(36, 179);
             lbId.Name = "lbId";
             lbId.Size = new Size(17, 15);
             lbId.TabIndex = 22;
@@ -64,10 +65,10 @@
             // dgvImages
             // 
             dgvImages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvImages.Location = new Point(312, 147);
+            dgvImages.Location = new Point(306, 147);
             dgvImages.Name = "dgvImages";
             dgvImages.RowTemplate.Height = 25;
-            dgvImages.Size = new Size(639, 276);
+            dgvImages.Size = new Size(763, 357);
             dgvImages.TabIndex = 21;
             dgvImages.CellDoubleClick += dgvImages_CellDoubleClick;
             // 
@@ -75,7 +76,7 @@
             // 
             btnDelete.BackColor = Color.Brown;
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(190, 302);
+            btnDelete.Location = new Point(200, 372);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 20;
@@ -86,7 +87,7 @@
             // btnCreate
             // 
             btnCreate.BackColor = Color.FromArgb(128, 255, 255);
-            btnCreate.Location = new Point(190, 263);
+            btnCreate.Location = new Point(200, 343);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(75, 23);
             btnCreate.TabIndex = 19;
@@ -96,7 +97,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(96, 263);
+            btnUpdate.Location = new Point(106, 343);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 18;
@@ -118,24 +119,15 @@
             // 
             lbLabel.AutoSize = true;
             lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            lbLabel.Location = new Point(428, 47);
+            lbLabel.Location = new Point(487, 58);
             lbLabel.Name = "lbLabel";
             lbLabel.Size = new Size(92, 32);
             lbLabel.TabIndex = 14;
             lbLabel.Text = "IMAGE";
             // 
-            // lbURL
-            // 
-            lbURL.AutoSize = true;
-            lbURL.Location = new Point(26, 237);
-            lbURL.Name = "lbURL";
-            lbURL.Size = new Size(28, 15);
-            lbURL.TabIndex = 13;
-            lbURL.Text = "URL";
-            // 
             // txtPostId
             // 
-            txtPostId.Location = new Point(96, 205);
+            txtPostId.Location = new Point(106, 205);
             txtPostId.Name = "txtPostId";
             txtPostId.Size = new Size(169, 23);
             txtPostId.TabIndex = 25;
@@ -143,24 +135,16 @@
             // lbPostId
             // 
             lbPostId.AutoSize = true;
-            lbPostId.Location = new Point(26, 208);
+            lbPostId.Location = new Point(36, 208);
             lbPostId.Name = "lbPostId";
             lbPostId.Size = new Size(43, 15);
             lbPostId.TabIndex = 24;
             lbPostId.Text = "Post Id";
             // 
-            // txtURL
-            // 
-            txtURL.Location = new Point(96, 234);
-            txtURL.Name = "txtURL";
-            txtURL.Size = new Size(169, 23);
-            txtURL.TabIndex = 26;
-            txtURL.TextChanged += txtURL_TextChanged;
-            // 
             // cbPost
             // 
             cbPost.FormattingEnabled = true;
-            cbPost.Location = new Point(96, 147);
+            cbPost.Location = new Point(106, 147);
             cbPost.Name = "cbPost";
             cbPost.Size = new Size(169, 23);
             cbPost.TabIndex = 27;
@@ -168,20 +152,40 @@
             // lbSelectPost
             // 
             lbSelectPost.AutoSize = true;
-            lbSelectPost.Location = new Point(26, 150);
+            lbSelectPost.Location = new Point(36, 150);
             lbSelectPost.Name = "lbSelectPost";
             lbSelectPost.Size = new Size(64, 15);
             lbSelectPost.TabIndex = 28;
             lbSelectPost.Text = "Select post";
             // 
+            // pctImage
+            // 
+            pctImage.Location = new Point(106, 234);
+            pctImage.Name = "pctImage";
+            pctImage.Size = new Size(169, 103);
+            pctImage.SizeMode = PictureBoxSizeMode.Zoom;
+            pctImage.TabIndex = 29;
+            pctImage.TabStop = false;
+            // 
+            // btnImage
+            // 
+            btnImage.Location = new Point(10, 283);
+            btnImage.Name = "btnImage";
+            btnImage.Size = new Size(90, 23);
+            btnImage.TabIndex = 30;
+            btnImage.Text = "Upload Image";
+            btnImage.UseVisualStyleBackColor = true;
+            btnImage.Click += btnImage_Click;
+            // 
             // Images
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(969, 450);
+            ClientSize = new Size(1081, 516);
+            Controls.Add(btnImage);
+            Controls.Add(pctImage);
             Controls.Add(lbSelectPost);
             Controls.Add(cbPost);
-            Controls.Add(txtURL);
             Controls.Add(txtPostId);
             Controls.Add(lbPostId);
             Controls.Add(txtId);
@@ -192,10 +196,10 @@
             Controls.Add(btnUpdate);
             Controls.Add(btnBack);
             Controls.Add(lbLabel);
-            Controls.Add(lbURL);
             Name = "Images";
             Text = "Image";
             ((System.ComponentModel.ISupportInitialize)dgvImages).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pctImage).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -211,12 +215,12 @@
         private TextBox txtTitle;
         private Button btnBack;
         private Label lbLabel;
-        private Label lbURL;
         private TextBox txtPostId;
         private Label lbPostId;
         private Label lbTitle;
-        private TextBox txtURL;
         private ComboBox cbPost;
         private Label lbSelectPost;
+        private PictureBox pctImage;
+        private Button btnImage;
     }
 }

@@ -42,21 +42,8 @@ namespace PRN211_FBlogAcademy
             }
         }
 
-        public bool checkData()
-        {
-            if (txtURL.Text.Trim() == "")
-            {
-                MessageBox.Show("Image URL required!");
-                return false;
-            }
-
-            return true;
-        }
-
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            if (!checkData()) return;
-
             var post = cbPost.SelectedItem as Post;
             if (post == null)
             {
@@ -64,10 +51,16 @@ namespace PRN211_FBlogAcademy
                 return;
             }
 
+            if (pctImage == null)
+            {
+                MessageBox.Show("You must choose an image first!");
+                return;
+            }
+
             var image = new Data.Models.Image()
             {
                 PostId = post.Id,
-                Url = txtURL.Text.Trim(),
+                Url = pctImage.ImageLocation,
                 CreatedAt = DateTime.Now,
                 Status = true
             };
@@ -78,8 +71,6 @@ namespace PRN211_FBlogAcademy
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (!checkData()) return;
-
             var id = int.Parse(txtId.Text.Trim());
             var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
             if (image == null)
@@ -95,7 +86,7 @@ namespace PRN211_FBlogAcademy
                 return;
             }
 
-            image.Url = txtURL.Text.Trim();
+            image.Url = pctImage.ImageLocation;
             imageRepository.UpdateEntity(image);
 
             btnCreate.Enabled = true;
@@ -104,8 +95,6 @@ namespace PRN211_FBlogAcademy
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (!checkData()) return;
-
             var id = int.Parse(txtId.Text.Trim());
             var image = imageRepository.GetAll().FirstOrDefault(p => p.Id == id);
             if (image == null)
@@ -133,7 +122,7 @@ namespace PRN211_FBlogAcademy
             var row = dgvImages.Rows[e.RowIndex];
             txtId.Text = row.Cells[0].Value.ToString();
             txtPostId.Text = row.Cells[1].Value.ToString();
-            txtURL.Text = row.Cells[2].Value.ToString();
+            pctImage.ImageLocation = row.Cells[2].Value.ToString();
 
             btnCreate.Enabled = false;
             btnUpdate.Enabled = true;
@@ -151,6 +140,31 @@ namespace PRN211_FBlogAcademy
             Main main = new();
             main.ShowDialog();
             this.Close();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+
+        }
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String imageLocation = "";
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "jpg files(*.jpg) | *.jpg | PNG files(*.png) | *.png | All files(*.*) | *.*";
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    imageLocation = dialog.FileName;
+                    pctImage.ImageLocation = imageLocation;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
