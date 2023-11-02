@@ -27,6 +27,7 @@ namespace PRN211_FBlogAcademy
                 cbPost.DataSource = posts;
                 cbPost.DisplayMember = "Title";
                 cbPost.ValueMember = "Id";
+                
             }
 
             updateGridView();
