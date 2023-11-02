@@ -64,6 +64,8 @@
             // 
             // dgvImages
             // 
+            dgvImages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvImages.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dgvImages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvImages.Location = new Point(306, 147);
             dgvImages.Name = "dgvImages";
@@ -118,12 +120,12 @@
             // lbLabel
             // 
             lbLabel.AutoSize = true;
-            lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lbLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lbLabel.Location = new Point(487, 58);
             lbLabel.Name = "lbLabel";
-            lbLabel.Size = new Size(92, 32);
+            lbLabel.Size = new Size(367, 45);
             lbLabel.TabIndex = 14;
-            lbLabel.Text = "IMAGE";
+            lbLabel.Text = "IMAGE MANAGEMENT";
             // 
             // txtPostId
             // 
@@ -181,7 +183,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1081, 516);
+            ClientSize = new Size(1078, 514);
             Controls.Add(btnImage);
             Controls.Add(pctImage);
             Controls.Add(lbSelectPost);
@@ -196,6 +198,7 @@
             Controls.Add(btnUpdate);
             Controls.Add(btnBack);
             Controls.Add(lbLabel);
+            Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "Images";
             Text = "Image";
             ((System.ComponentModel.ISupportInitialize)dgvImages).EndInit();

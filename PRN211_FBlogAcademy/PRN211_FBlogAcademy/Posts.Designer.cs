@@ -66,12 +66,12 @@
             // lbLabel
             // 
             lbLabel.AutoSize = true;
-            lbLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lbLabel.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
             lbLabel.Location = new Point(416, 37);
             lbLabel.Name = "lbLabel";
-            lbLabel.Size = new Size(74, 32);
+            lbLabel.Size = new Size(344, 45);
             lbLabel.TabIndex = 2;
-            lbLabel.Text = "POST";
+            lbLabel.Text = "POST MANAGEMENT";
             // 
             // btnBack
             // 
@@ -133,6 +133,8 @@
             // 
             // dgvPosts
             // 
+            dgvPosts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPosts.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllHeaders;
             dgvPosts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPosts.Location = new Point(306, 132);
             dgvPosts.Name = "dgvPosts";

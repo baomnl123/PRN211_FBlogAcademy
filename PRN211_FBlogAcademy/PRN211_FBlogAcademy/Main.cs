@@ -36,7 +36,7 @@ namespace PRN211_FBlogAcademy
         private void btnVideo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Videos video= new();
+            Videos video = new();
             video.ShowDialog();
             this.Close();
         }
@@ -44,7 +44,7 @@ namespace PRN211_FBlogAcademy
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Login login= new();
+            Login login = new();
             login.ShowDialog();
             this.Close();
         }

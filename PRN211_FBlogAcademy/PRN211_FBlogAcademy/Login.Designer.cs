@@ -33,6 +33,8 @@
             lbEmail = new Label();
             lbPassword = new Label();
             btnLogin = new Button();
+            label1 = new Label();
+            btnLogout = new Button();
             SuspendLayout();
             // 
             // txtEmail
@@ -79,11 +81,35 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(156, 62);
+            label1.Name = "label1";
+            label1.Size = new Size(529, 45);
+            label1.TabIndex = 5;
+            label1.Text = "FBLOG ACADEMY MANAGEMENT";
+            // 
+            // btnLogout
+            // 
+            btnLogout.BackColor = Color.Brown;
+            btnLogout.ForeColor = SystemColors.Control;
+            btnLogout.Location = new Point(713, 415);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(75, 23);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Exit";
+            btnLogout.UseVisualStyleBackColor = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnLogout);
+            Controls.Add(label1);
             Controls.Add(btnLogin);
             Controls.Add(lbPassword);
             Controls.Add(lbEmail);
@@ -102,5 +128,7 @@
         private Label lbEmail;
         private Label lbPassword;
         private Button btnLogin;
+        private Label label1;
+        private Button btnLogout;
     }
 }
