@@ -18,7 +18,6 @@ namespace PRN211_FBlogAcademy
             imageRepository = new ImageRepository();
 
             txtId.ReadOnly = true;
-            txtPostId.ReadOnly = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
 
@@ -193,7 +192,6 @@ namespace PRN211_FBlogAcademy
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             txtId.Text = null;
-            txtPostId.Text = null;
             pctImage.ImageLocation = null;
 
             btnCreate.Enabled = true;
