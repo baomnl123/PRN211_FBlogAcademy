@@ -121,22 +121,15 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-                if (post == null)
-                {
-                    MessageBox.Show("Post is not exists!");
-                    return;
-                }
-
                 image.Url = pctImage.ImageLocation;
                 imageRepository.UpdateEntity(image);
 
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -152,22 +145,15 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-                if (post == null)
-                {
-                    MessageBox.Show("Post is not exists!");
-                    return;
-                }
-
                 image.Status = false;
                 imageRepository.DeleteEntity(image);
 
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 

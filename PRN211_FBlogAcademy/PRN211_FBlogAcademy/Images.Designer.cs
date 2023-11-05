@@ -36,13 +36,13 @@
             btnUpdate = new Button();
             btnBack = new Button();
             lbLabel = new Label();
-            txtPostId = new TextBox();
-            lbPostId = new Label();
             cbPost = new ComboBox();
             lbSelectPost = new Label();
             pctImage = new PictureBox();
             btnImage = new Button();
             btnRefresh = new Button();
+            txtPostId = new TextBox();
+            lbPostId = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pctImage).BeginInit();
             SuspendLayout();
@@ -128,22 +128,6 @@
             lbLabel.TabIndex = 14;
             lbLabel.Text = "IMAGE MANAGEMENT";
             // 
-            // txtPostId
-            // 
-            txtPostId.Location = new Point(110, 205);
-            txtPostId.Name = "txtPostId";
-            txtPostId.Size = new Size(169, 23);
-            txtPostId.TabIndex = 25;
-            // 
-            // lbPostId
-            // 
-            lbPostId.AutoSize = true;
-            lbPostId.Location = new Point(40, 208);
-            lbPostId.Name = "lbPostId";
-            lbPostId.Size = new Size(43, 15);
-            lbPostId.TabIndex = 24;
-            lbPostId.Text = "Post Id";
-            // 
             // cbPost
             // 
             cbPost.FormattingEnabled = true;
@@ -190,6 +174,22 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // txtPostId
+            // 
+            txtPostId.Location = new Point(110, 205);
+            txtPostId.Name = "txtPostId";
+            txtPostId.Size = new Size(169, 23);
+            txtPostId.TabIndex = 25;
+            // 
+            // lbPostId
+            // 
+            lbPostId.AutoSize = true;
+            lbPostId.Location = new Point(40, 208);
+            lbPostId.Name = "lbPostId";
+            lbPostId.Size = new Size(43, 15);
+            lbPostId.TabIndex = 24;
+            lbPostId.Text = "Post Id";
+            // 
             // Images
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -230,13 +230,13 @@
         private TextBox txtTitle;
         private Button btnBack;
         private Label lbLabel;
-        private TextBox txtPostId;
-        private Label lbPostId;
         private Label lbTitle;
         private ComboBox cbPost;
         private Label lbSelectPost;
         private PictureBox pctImage;
         private Button btnImage;
         private Button btnRefresh;
+        private TextBox txtPostId;
+        private Label lbPostId;
     }
 }
