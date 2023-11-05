@@ -151,7 +151,6 @@
             cbPost.Name = "cbPost";
             cbPost.Size = new Size(169, 23);
             cbPost.TabIndex = 27;
-            cbPost.SelectedIndexChanged += cbPost_SelectedIndexChanged;
             // 
             // lbSelectPost
             // 

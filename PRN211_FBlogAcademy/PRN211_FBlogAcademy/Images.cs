@@ -1,6 +1,7 @@
 ﻿
 using Data.Models;
 using Data.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace PRN211_FBlogAcademy
 {
@@ -34,11 +35,23 @@ namespace PRN211_FBlogAcademy
 
         public void updateGridView()
         {
-            var images = imageRepository.GetAll().ToList();
-            if (images != null)
+            try
             {
-                var listImage = images.ToList();
-                dgvImages.DataSource = listImage.Where(p => p.Status == true).ToList();
+                var images = imageRepository.GetAll().Where(p => p.Status == true).Include(p => p.Post).ToList();
+                if (images != null && images.Count > 0)
+                {
+                    dgvImages.DataSource = images.Select(p => new
+                    {
+                        Id = p.Id,
+                        Post = p.Post?.Title,
+                        Url = p.Url,
+                        CreatedAt = p.CreatedAt,
+                    }).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -160,14 +173,22 @@ namespace PRN211_FBlogAcademy
 
         private void dgvImages_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var row = dgvImages.Rows[e.RowIndex];
-            txtId.Text = row.Cells[0].Value.ToString();
-            txtPostId.Text = row.Cells[1].Value.ToString();
-            pctImage.ImageLocation = row.Cells[2].Value.ToString();
+            try
+            {
+                var row = dgvImages.Rows[e.RowIndex];
+                txtId.Text = row.Cells[0].Value.ToString();
+                //txtPostId.Text = row.Cells[1].Value.ToString();
+                cbPost.Text = row.Cells[1].Value.ToString();
+                pctImage.ImageLocation = row.Cells[2].Value.ToString();
 
-            btnCreate.Enabled = false;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txtURL_TextChanged(object sender, EventArgs e)
@@ -183,19 +204,6 @@ namespace PRN211_FBlogAcademy
             this.Close();
         }
 
-        private void cbPost_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var post = cbPost.SelectedItem as Post;
-            txtPostId.Text = post.Id.ToString();
-            var images = imageRepository.GetAll().Where(p => p.PostId == post.Id && p.Status == true);
-            if (images != null)
-            {
-                var listImage = images.ToList();
-
-                dgvImages.DataSource = listImage.ToList();
-            }
-        }
-
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             txtId.Text = null;
@@ -205,6 +213,8 @@ namespace PRN211_FBlogAcademy
             btnCreate.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
+
+            updateGridView();
         }
     }
 }
