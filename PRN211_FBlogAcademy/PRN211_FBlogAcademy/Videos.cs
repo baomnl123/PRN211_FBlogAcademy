@@ -79,15 +79,19 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                if (txtURL.Text.Trim() == null)
+                string videoUrl = txtURL.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(videoUrl))
                 {
-                    MessageBox.Show("Video is required!");
+                    MessageBox.Show("Video URL is required!");
                     return;
                 }
 
-                if(txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
+                string fileExtension = System.IO.Path.GetExtension(videoUrl);
+
+                if (fileExtension != ".mp4")
                 {
-                    MessageBox.Show("You must upload Video");
+                    MessageBox.Show("You must upload a video file with a .mp4 extension.");
                     return;
                 }
 
@@ -121,7 +125,21 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                video.Url = txtURL.Text.Trim();
+                string videoUrl = txtURL.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(videoUrl))
+                {
+                    MessageBox.Show("Video URL is required!");
+                    return;
+                }
+
+                string fileExtension = System.IO.Path.GetExtension(videoUrl);
+
+                if (fileExtension != ".mp4")
+                {
+                    MessageBox.Show("You must upload a video file with a .mp4 extension.");
+                    return;
+                }
                 videoRepository.UpdateEntity(video);
 
                 btnCreate.Enabled = true;

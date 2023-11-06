@@ -102,6 +102,7 @@
             btnLogout.TabIndex = 6;
             btnLogout.Text = "Exit";
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // Login
             // 
@@ -130,5 +131,6 @@
         private Button btnLogin;
         private Label label1;
         private Button btnLogout;
+        private Button btnExit;
     }
 }
