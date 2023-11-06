@@ -72,7 +72,6 @@ namespace PRN211_FBlogAcademy
         {
             try
             {
-
                 var post = cbPost.SelectedItem as Post;
                 if (post == null)
                 {
