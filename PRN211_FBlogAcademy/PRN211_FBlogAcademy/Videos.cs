@@ -85,7 +85,7 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                if(txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
+                if (txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
                 {
                     MessageBox.Show("You must upload Video");
                     return;
@@ -118,6 +118,12 @@ namespace PRN211_FBlogAcademy
                 if (video == null)
                 {
                     MessageBox.Show("Video is not exists!");
+                    return;
+                }
+
+                if (txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
+                {
+                    MessageBox.Show("You must upload Video");
                     return;
                 }
 
