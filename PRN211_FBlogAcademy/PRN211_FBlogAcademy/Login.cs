@@ -40,7 +40,7 @@ namespace PRN211_FBlogAcademy
 
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
         }

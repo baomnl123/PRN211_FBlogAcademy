@@ -94,15 +94,15 @@
             // 
             // btnExit
             // 
-            btnExit.BackColor = Color.Brown;
-            btnExit.ForeColor = SystemColors.Control;
-            btnExit.Location = new Point(713, 415);
-            btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
-            btnExit.TabIndex = 6;
-            btnExit.Text = "Exit";
-            btnExit.UseVisualStyleBackColor = false;
-            btnExit.Click += btnExit_Click;
+            btnLogout.BackColor = Color.Brown;
+            btnLogout.ForeColor = SystemColors.Control;
+            btnLogout.Location = new Point(713, 415);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(75, 23);
+            btnLogout.TabIndex = 6;
+            btnLogout.Text = "Exit";
+            btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // Login
             // 
@@ -130,6 +130,7 @@
         private Label lbPassword;
         private Button btnLogin;
         private Label label1;
+        private Button btnLogout;
         private Button btnExit;
     }
 }
