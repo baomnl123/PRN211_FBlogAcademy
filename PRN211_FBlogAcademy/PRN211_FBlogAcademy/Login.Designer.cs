@@ -34,7 +34,7 @@
             lbPassword = new Label();
             btnLogin = new Button();
             label1 = new Label();
-            btnLogout = new Button();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // txtEmail
@@ -92,7 +92,7 @@
             label1.TabIndex = 5;
             label1.Text = "FBLOG ACADEMY MANAGEMENT";
             // 
-            // btnLogout
+            // btnExit
             // 
             btnLogout.BackColor = Color.Brown;
             btnLogout.ForeColor = SystemColors.Control;
@@ -109,7 +109,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnLogout);
+            Controls.Add(btnExit);
             Controls.Add(label1);
             Controls.Add(btnLogin);
             Controls.Add(lbPassword);
