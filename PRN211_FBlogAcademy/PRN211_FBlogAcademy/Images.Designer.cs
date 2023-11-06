@@ -36,12 +36,11 @@
             btnUpdate = new Button();
             btnBack = new Button();
             lbLabel = new Label();
-            txtPostId = new TextBox();
-            lbPostId = new Label();
             cbPost = new ComboBox();
             lbSelectPost = new Label();
             pctImage = new PictureBox();
             btnImage = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvImages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pctImage).BeginInit();
             SuspendLayout();
@@ -78,7 +77,7 @@
             // 
             btnDelete.BackColor = Color.Brown;
             btnDelete.ForeColor = SystemColors.ControlLightLight;
-            btnDelete.Location = new Point(204, 372);
+            btnDelete.Location = new Point(204, 343);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(75, 23);
             btnDelete.TabIndex = 20;
@@ -89,7 +88,7 @@
             // btnCreate
             // 
             btnCreate.BackColor = Color.FromArgb(128, 255, 255);
-            btnCreate.Location = new Point(204, 343);
+            btnCreate.Location = new Point(204, 314);
             btnCreate.Name = "btnCreate";
             btnCreate.Size = new Size(75, 23);
             btnCreate.TabIndex = 19;
@@ -99,7 +98,7 @@
             // 
             // btnUpdate
             // 
-            btnUpdate.Location = new Point(110, 343);
+            btnUpdate.Location = new Point(110, 314);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(75, 23);
             btnUpdate.TabIndex = 18;
@@ -127,22 +126,6 @@
             lbLabel.TabIndex = 14;
             lbLabel.Text = "IMAGE MANAGEMENT";
             // 
-            // txtPostId
-            // 
-            txtPostId.Location = new Point(110, 205);
-            txtPostId.Name = "txtPostId";
-            txtPostId.Size = new Size(169, 23);
-            txtPostId.TabIndex = 25;
-            // 
-            // lbPostId
-            // 
-            lbPostId.AutoSize = true;
-            lbPostId.Location = new Point(40, 208);
-            lbPostId.Name = "lbPostId";
-            lbPostId.Size = new Size(43, 15);
-            lbPostId.TabIndex = 24;
-            lbPostId.Text = "Post Id";
-            // 
             // cbPost
             // 
             cbPost.FormattingEnabled = true;
@@ -162,7 +145,7 @@
             // 
             // pctImage
             // 
-            pctImage.Location = new Point(110, 234);
+            pctImage.Location = new Point(110, 205);
             pctImage.Name = "pctImage";
             pctImage.Size = new Size(169, 103);
             pctImage.SizeMode = PictureBoxSizeMode.Zoom;
@@ -171,7 +154,7 @@
             // 
             // btnImage
             // 
-            btnImage.Location = new Point(14, 283);
+            btnImage.Location = new Point(14, 254);
             btnImage.Name = "btnImage";
             btnImage.Size = new Size(90, 23);
             btnImage.TabIndex = 30;
@@ -179,17 +162,26 @@
             btnImage.UseVisualStyleBackColor = true;
             btnImage.Click += btnImage_Click;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(110, 343);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 31;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // Images
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1078, 514);
+            Controls.Add(btnRefresh);
             Controls.Add(btnImage);
             Controls.Add(pctImage);
             Controls.Add(lbSelectPost);
             Controls.Add(cbPost);
-            Controls.Add(txtPostId);
-            Controls.Add(lbPostId);
             Controls.Add(txtId);
             Controls.Add(lbId);
             Controls.Add(dgvImages);
@@ -218,12 +210,11 @@
         private TextBox txtTitle;
         private Button btnBack;
         private Label lbLabel;
-        private TextBox txtPostId;
-        private Label lbPostId;
         private Label lbTitle;
         private ComboBox cbPost;
         private Label lbSelectPost;
         private PictureBox pctImage;
         private Button btnImage;
+        private Button btnRefresh;
     }
 }

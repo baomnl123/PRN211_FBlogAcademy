@@ -58,9 +58,9 @@
             lbEmail.AutoSize = true;
             lbEmail.Location = new Point(250, 152);
             lbEmail.Name = "lbEmail";
-            lbEmail.Size = new Size(36, 15);
+            lbEmail.Size = new Size(60, 15);
             lbEmail.TabIndex = 2;
-            lbEmail.Text = "Email";
+            lbEmail.Text = "Username";
             // 
             // lbPassword
             // 

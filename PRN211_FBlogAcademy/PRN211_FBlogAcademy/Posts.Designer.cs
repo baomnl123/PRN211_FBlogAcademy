@@ -42,6 +42,7 @@
             txtId = new TextBox();
             btnSearch = new Button();
             txtSearch = new TextBox();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPosts).BeginInit();
             SuspendLayout();
             // 
@@ -176,11 +177,22 @@
             txtSearch.Size = new Size(572, 23);
             txtSearch.TabIndex = 13;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(87, 258);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 14;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // Posts
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(971, 450);
+            Controls.Add(btnRefresh);
             Controls.Add(txtSearch);
             Controls.Add(btnSearch);
             Controls.Add(txtId);
@@ -218,5 +230,6 @@
         private TextBox txtId;
         private Button btnSearch;
         private TextBox txtSearch;
+        private Button btnRefresh;
     }
 }

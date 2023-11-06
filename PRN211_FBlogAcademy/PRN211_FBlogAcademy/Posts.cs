@@ -26,12 +26,17 @@ namespace PRN211_FBlogAcademy
 
         public void updateGridView()
         {
-            var posts = postRepository.GetAll().ToList();
-            if (posts != null)
+            var posts = postRepository.GetAll().Where(p => p.Status).ToList();
+            if (posts != null && posts.Count > 0)
             {
-                var listPost = posts.ToList();
-
-                dgvPosts.DataSource = listPost.Where(p => p.Status == true).ToList();
+                dgvPosts.DataSource = posts.Select(p => new
+                {
+                    Id = p.Id,
+                    Post = p.Title,
+                    Content = p.Content,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                }).ToList();
             }
         }
 
@@ -173,13 +178,31 @@ namespace PRN211_FBlogAcademy
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            var posts = postRepository.GetAll().Where(p => p.Title.Contains(txtSearch.Text) && p.Status == true);
-            if (posts != null)
+            var post = postRepository.GetAll().Where(p => p.Title.Contains(txtSearch.Text) && p.Status);
+            if (post != null)
             {
-                var listPost = posts.ToList();
-
-                dgvPosts.DataSource = listPost.ToList();
+                dgvPosts.DataSource = post.Select(p => new
+                {
+                    Id = p.Id,
+                    Post = p.Title,
+                    Content = p.Content,
+                    CreatedAt = p.CreatedAt,
+                    UpdatedAt = p.UpdatedAt,
+                }).ToList();
             }
+
+            btnCreate.Enabled = true;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtTitle.Text = null;
+            txtContent.Text = null;
+
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
     }
 }

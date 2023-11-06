@@ -1,5 +1,6 @@
 ﻿using Data.Models;
 using Data.Repository;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
 
 namespace PRN211_FBlogAcademy
@@ -17,7 +18,7 @@ namespace PRN211_FBlogAcademy
             videoRepository = new VideoRepository();
 
             txtId.ReadOnly = true;
-            txtPostId.ReadOnly = true;
+            txtURL.ReadOnly = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
 
@@ -34,11 +35,16 @@ namespace PRN211_FBlogAcademy
         }
         public void updateGridView()
         {
-            var videos = videoRepository.GetAll().ToList();
-            if (videos != null)
+            var videos = videoRepository.GetAll().Where(p => p.Status).Include(p => p.Post).ToList();
+            if (videos != null && videos.Count > 0)
             {
-                var listVideo = videos.ToList();
-                dgvVideos.DataSource = listVideo.Where(p => p.Status == true).ToList();
+                dgvVideos.DataSource = videos.Select(p => new
+                {
+                    Id = p.Id,
+                    Post = p.Post?.Title,
+                    Url = p.Url,
+                    CreatedAt = p.CreatedAt,
+                }).ToList();
             }
         }
 
@@ -56,9 +62,9 @@ namespace PRN211_FBlogAcademy
                     txtURL.Text = videoLocation;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -80,6 +86,12 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
+                if (txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
+                {
+                    MessageBox.Show("You must upload Video");
+                    return;
+                }
+
                 var video = new Video()
                 {
                     PostId = post.Id,
@@ -92,9 +104,9 @@ namespace PRN211_FBlogAcademy
                 MessageBox.Show("Create video successfully!");
                 updateGridView();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -111,10 +123,9 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-                if (post == null)
+                if (txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
                 {
-                    MessageBox.Show("Post is not exists!");
+                    MessageBox.Show("You must upload Video");
                     return;
                 }
 
@@ -125,9 +136,9 @@ namespace PRN211_FBlogAcademy
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -143,13 +154,6 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
-                var post = postRepository.GetAll().FirstOrDefault(p => p.Id == int.Parse(txtPostId.Text));
-                if (post == null)
-                {
-                    MessageBox.Show("Post is not exists!");
-                    return;
-                }
-
                 video.Status = false;
                 videoRepository.DeleteEntity(video);
                 MessageBox.Show("Delete video successfully!");
@@ -157,22 +161,29 @@ namespace PRN211_FBlogAcademy
                 btnCreate.Enabled = true;
                 updateGridView();
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("An error occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void dgvVideos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var row = dgvVideos.Rows[e.RowIndex];
-            txtId.Text = row.Cells[0].Value.ToString();
-            txtPostId.Text = row.Cells[1].Value.ToString();
-            txtURL.Text = row.Cells[2].Value.ToString();
+            try
+            {
+                var row = dgvVideos.Rows[e.RowIndex];
+                txtId.Text = row.Cells[0].Value.ToString();
+                cbPost.Text = row.Cells[1].Value.ToString();
+                txtURL.Text = row.Cells[2].Value.ToString();
 
-            btnCreate.Enabled = false;
-            btnUpdate.Enabled = true;
-            btnDelete.Enabled = true;
+                btnCreate.Enabled = false;
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txtURL_TextChanged(object sender, EventArgs e)
@@ -192,6 +203,16 @@ namespace PRN211_FBlogAcademy
             txtId.Clear();
             txtPostId.Clear();
             txtURL.Clear();
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            txtId.Text = null;
+            txtURL.Text = null;
+
             btnCreate.Enabled = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
