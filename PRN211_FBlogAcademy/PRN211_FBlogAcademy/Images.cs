@@ -126,6 +126,12 @@ namespace PRN211_FBlogAcademy
                     return;
                 }
 
+                if (pctImage.ImageLocation.Contains("mp4"))
+                {
+                    MessageBox.Show("You must upload Image");
+                    return;
+                }
+
                 image.Url = pctImage.ImageLocation;
                 imageRepository.UpdateEntity(image);
 
