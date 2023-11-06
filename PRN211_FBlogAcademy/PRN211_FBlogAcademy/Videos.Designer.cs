@@ -40,7 +40,7 @@
             btnCreate = new Button();
             btnUpdate = new Button();
             txtURL = new TextBox();
-            btnRefresh = new Button();
+            btnClear = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvVideos).BeginInit();
             SuspendLayout();
             // 
@@ -159,22 +159,23 @@
             txtURL.Size = new Size(169, 23);
             txtURL.TabIndex = 46;
             // 
-            // btnRefresh
+            // btnClear
             // 
-            btnRefresh.Location = new Point(111, 271);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(75, 23);
-            btnRefresh.TabIndex = 47;
-            btnRefresh.Text = "Refresh";
-            btnRefresh.UseVisualStyleBackColor = true;
-            btnRefresh.Click += btnRefresh_Click;
+            btnClear.BackColor = SystemColors.ActiveCaption;
+            btnClear.Location = new Point(111, 300);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 47;
+            btnClear.Text = "Clear Data";
+            btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // Videos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1083, 519);
-            Controls.Add(btnRefresh);
+            Controls.Add(btnClear);
             Controls.Add(txtURL);
             Controls.Add(btnVideo);
             Controls.Add(btnDelete);
@@ -207,6 +208,6 @@
         private Button btnCreate;
         private Button btnUpdate;
         private TextBox txtURL;
-        private Button btnRefresh;
+        private Button btnClear;
     }
 }

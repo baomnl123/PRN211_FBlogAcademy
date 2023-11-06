@@ -28,6 +28,7 @@ namespace PRN211_FBlogAcademy
                 cbPost.DataSource = posts;
                 cbPost.DisplayMember = "Title";
                 cbPost.ValueMember = "Id";
+                
             }
 
             updateGridView();
@@ -100,6 +101,7 @@ namespace PRN211_FBlogAcademy
                 };
 
                 videoRepository.Add(video);
+                MessageBox.Show("Create video successfully!");
                 updateGridView();
             }
             catch (Exception ex)
@@ -129,6 +131,7 @@ namespace PRN211_FBlogAcademy
 
                 video.Url = txtURL.Text.Trim();
                 videoRepository.UpdateEntity(video);
+                MessageBox.Show("Update video successfully!");
 
                 btnCreate.Enabled = true;
                 updateGridView();
@@ -153,6 +156,7 @@ namespace PRN211_FBlogAcademy
 
                 video.Status = false;
                 videoRepository.DeleteEntity(video);
+                MessageBox.Show("Delete video successfully!");
 
                 btnCreate.Enabled = true;
                 updateGridView();
@@ -192,7 +196,16 @@ namespace PRN211_FBlogAcademy
             this.Hide();
             Main main = new();
             main.ShowDialog();
-            this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtId.Clear();
+            txtPostId.Clear();
+            txtURL.Clear();
+            btnCreate.Enabled = true;
+            btnUpdate.Enabled = false;
+            btnDelete.Enabled = false;
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
