@@ -18,6 +18,7 @@ namespace PRN211_FBlogAcademy
             videoRepository = new VideoRepository();
 
             txtId.ReadOnly = true;
+            txtURL.ReadOnly = true;
             btnUpdate.Enabled = false;
             btnDelete.Enabled = false;
 
@@ -81,6 +82,12 @@ namespace PRN211_FBlogAcademy
                 if (txtURL.Text.Trim() == null)
                 {
                     MessageBox.Show("Video is required!");
+                    return;
+                }
+
+                if(txtURL.Text.Contains("png") || txtURL.Text.Contains("jpg"))
+                {
+                    MessageBox.Show("You must upload Video");
                     return;
                 }
 

@@ -22,7 +22,7 @@ namespace PRN211_FBlogAcademy
             this.Hide();
             Posts post = new();
             post.ShowDialog();
-            this.Close();
+            //this.Close();
         }
 
         private void btnImage_Click(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace PRN211_FBlogAcademy
             this.Hide();
             Images image = new();
             image.ShowDialog();
-            this.Close();
+            //this.Close();
         }
 
         private void btnVideo_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace PRN211_FBlogAcademy
             this.Hide();
             Videos video = new();
             video.ShowDialog();
-            this.Close();
+            //this.Close();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
